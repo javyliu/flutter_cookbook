@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../routes/app_routes.dart';
 
 class MenuList extends StatelessWidget {
   @override
@@ -7,7 +8,18 @@ class MenuList extends StatelessWidget {
       appBar: AppBar(
         title: Text("Cook Book"),
       ),
-      body: Center(),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: oriRoutes.map((element) {
+              return FlatButton(
+                child: Text(element["title"]),
+                onPressed: () => Navigator.push(context, MaterialPageRoute(builder: element["fun"])),
+              );
+            }).toList(),
+          ),
+        ),
+      ),
     );
   }
 }

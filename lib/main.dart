@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       // home: PhysicsCardDragDemo(),
       // home: AnimatedContainerApp(),
       initialRoute: '/',
-      routes: routes,
+      routes: routes(),
     );
   }
 }
