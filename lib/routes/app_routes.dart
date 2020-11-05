@@ -1,3 +1,4 @@
+import 'package:cookbook/widgets/form_validation.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/menu_list.dart';
@@ -5,12 +6,17 @@ import '../widgets/menu_list.dart';
 import '../widgets/animated_container.dart';
 import '../widgets/page_route_transition.dart';
 import '../widgets/physics_simulation.dart';
+import '../widgets/fade_widget.dart';
+import '../widgets/orientation.dart';
 
 final List<Map> oriRoutes = [
   {"title": "菜单", "path": "/", "fun": (context) => MenuList()},
   {"title": "容器动画", "path": "/animated_container", "fun": (context) => AnimatedContainerApp()},
   {"title": "页面切换动画", "path": "/page_route_transition", "fun": (context) => PageRouteTransition()},
   {"title": "拖动动画", "path": "/physics_card_demo", "fun": (context) => PhysicsCardDragDemo()},
+  {"title": "渐隐动画", "path": "/fade_widget", "fun": (context) => FadeWidget()},
+  {"title": TOrientation.name, "path": "/orientation", "fun": (context) => TOrientation()},
+  {"title": FormValidation.name, "path": "/form_validation", "fun": (context) => FormValidation()},
 ];
 
 Map<String, WidgetBuilder> routes() {

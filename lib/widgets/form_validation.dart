@@ -1,0 +1,97 @@
+import 'package:flutter/material.dart';
+
+class FormValidation extends StatelessWidget {
+  static String name = "表单验证";
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(FormValidation.name),
+      ),
+      body: MyForm(),
+    );
+  }
+}
+
+class MyForm extends StatefulWidget {
+  @override
+  _MyFormState createState() => _MyFormState();
+}
+
+class _MyFormState extends State<MyForm> {
+  final _formKey = GlobalKey<FormState>();
+  final myController = TextEditingController();
+
+  @override
+  void dispose() {
+    myController.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    myController.addListener(_printLatestValue);
+  }
+
+  _printLatestValue() {
+    print("Second text field: ${myController.text} ");
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: _formKey,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          TextFormField(
+            decoration: InputDecoration(
+              labelText: "Enter your name",
+              // border: InputBorder.none,
+            ),
+            validator: (value) {
+              if (value.isEmpty) {
+                return "Please enter some text";
+              }
+              return null;
+            },
+            controller: myController,
+            // onChanged: (value) {
+            //   print("First text field: $value");
+            // },
+          ),
+          TextField(
+            controller: myController,
+            autofocus: true,
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 16),
+            child: ElevatedButton(
+              onPressed: () {
+                if (_formKey.currentState.validate()) {
+                  Scaffold.of(context).showSnackBar(SnackBar(content: Text("Processing Data...")));
+                }
+              },
+              child: Text("Submit"),
+            ),
+          ),
+          FlatButton(
+            onPressed: () {
+              return showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    content: Text(myController.text),
+                  );
+                },
+              );
+            },
+            child: Text("显示输入框内容"),
+          )
+        ],
+      ),
+    );
+  }
+}

@@ -17,6 +17,17 @@ class MyApp extends StatelessWidget {
       // home: AnimatedContainerApp(),
       initialRoute: '/',
       routes: routes(),
+      theme: ThemeData(
+          brightness: Brightness.light,
+          primaryColor: Colors.lightBlue[800],
+          accentColor: Colors.cyan[600],
+          fontFamily: 'Georgia',
+          textTheme: TextTheme(
+            headline1: TextStyle(fontSize: 72, fontWeight: FontWeight.bold),
+            headline6: TextStyle(fontSize: 36, fontStyle: FontStyle.italic),
+            bodyText2: TextStyle(fontSize: 14, fontFamily: 'Hind'),
+          )),
+      // home: FadeWidget(),
     );
   }
 }
