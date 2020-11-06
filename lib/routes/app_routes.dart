@@ -1,4 +1,5 @@
 import 'package:cookbook/widgets/form_validation.dart';
+import 'package:cookbook/widgets/swipe_dismiss.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/menu_list.dart';
@@ -17,6 +18,7 @@ final List<Map> oriRoutes = [
   {"title": "渐隐动画", "path": "/fade_widget", "fun": (context) => FadeWidget()},
   {"title": TOrientation.name, "path": "/orientation", "fun": (context) => TOrientation()},
   {"title": FormValidation.name, "path": "/form_validation", "fun": (context) => FormValidation()},
+  {"title": SwipeDismiss.name, "path": "/swipe_dissmiss", "fun": (context) => SwipeDismiss()},
 ];
 
 Map<String, WidgetBuilder> routes() {

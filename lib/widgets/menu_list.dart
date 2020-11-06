@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../routes/app_routes.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class MenuList extends StatelessWidget {
   @override
@@ -42,9 +43,59 @@ class MenuList extends StatelessWidget {
                 onPressed: () => _globalKey.currentState.showSnackBar(snackBar),
               ),
             ),
-            Icon(Icons.directions_car),
-            Icon(Icons.directions_transit),
-            Icon(Icons.directions_bike),
+            ListView(
+              scrollDirection: Axis.vertical,
+              children: [
+                ListTile(
+                  leading: Icon(Icons.map),
+                  title: Icon(Icons.directions_car),
+                ),
+                ListTile(
+                  leading: Icon(Icons.photo_album),
+                  title: Text("Album"),
+                ),
+                ListTile(
+                  leading: Icon(Icons.phone),
+                  title: Text("Phone"),
+                )
+              ],
+            ),
+            Container(
+              height: 200.0,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  Container(
+                    width: 160,
+                    color: Colors.blue,
+                  ),
+                  Container(
+                    width: 160,
+                    color: Colors.blue[300],
+                  ),
+                  Container(
+                    width: 160,
+                    color: Colors.blue[600],
+                  )
+                ],
+              ),
+            ),
+            Column(
+              children: [
+                Icon(Icons.directions_bike),
+                Image.network(
+                  'https://picsum.photos/250?image=9',
+                ),
+                Stack(children: [
+                  Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                  Center(
+                    child: FadeInImage.memoryNetwork(placeholder: kTransparentImage, image: 'https://picsum.photos/250?image=9'),
+                  ),
+                ]),
+              ],
+            ),
           ],
         ),
         drawer: Drawer(
@@ -60,7 +111,10 @@ class MenuList extends StatelessWidget {
             ]..addAll(oriRoutes.map((el) {
                 return ListTile(
                   title: Text(el["title"]),
-                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: el["fun"])),
+                  onTap: () {
+                    Navigator.pop(context);
+                    return Navigator.push(context, MaterialPageRoute(builder: el["fun"]));
+                  },
                 );
               })),
           ),

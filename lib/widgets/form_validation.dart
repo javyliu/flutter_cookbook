@@ -22,10 +22,13 @@ class MyForm extends StatefulWidget {
 class _MyFormState extends State<MyForm> {
   final _formKey = GlobalKey<FormState>();
   final myController = TextEditingController();
+  //用于控制谁获得焦点，如果多个该怎么办么？
 
+  final FocusNode myFodusNode = FocusNode();
   @override
   void dispose() {
     myController.dispose();
+    myFodusNode.dispose();
     super.dispose();
   }
 
@@ -57,6 +60,7 @@ class _MyFormState extends State<MyForm> {
               }
               return null;
             },
+            focusNode: myFodusNode,
             controller: myController,
             // onChanged: (value) {
             //   print("First text field: $value");
@@ -64,7 +68,15 @@ class _MyFormState extends State<MyForm> {
           ),
           TextField(
             controller: myController,
-            autofocus: true,
+            focusNode: myFodusNode,
+            decoration: InputDecoration(labelText: "密码"),
+
+            // autofocus: true,
+          ),
+          TextField(
+            focusNode: myFodusNode,
+            decoration: InputDecoration(labelText: "重复密码"),
+            // autofocus: true,
           ),
           Padding(
             padding: EdgeInsets.symmetric(vertical: 16),
@@ -79,6 +91,8 @@ class _MyFormState extends State<MyForm> {
           ),
           FlatButton(
             onPressed: () {
+              // myFodusNode.requestFocus();
+              myFodusNode.nextFocus();
               return showDialog(
                 context: context,
                 builder: (context) {
@@ -89,6 +103,19 @@ class _MyFormState extends State<MyForm> {
               );
             },
             child: Text("显示输入框内容"),
+          ),
+          InkWell(
+            onTap: () {
+              Scaffold.of(context).showSnackBar(
+                SnackBar(
+                  content: Text("Tap"),
+                ),
+              );
+            },
+            child: Container(
+              padding: EdgeInsets.all(12.0),
+              child: Text("使用InkWell显示点击水波纹效果"),
+            ),
           )
         ],
       ),
