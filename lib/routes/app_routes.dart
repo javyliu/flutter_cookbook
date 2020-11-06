@@ -1,3 +1,4 @@
+import 'package:cookbook/widgets/float_app_bar.dart';
 import 'package:cookbook/widgets/form_validation.dart';
 import 'package:cookbook/widgets/swipe_dismiss.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,7 @@ final List<Map> oriRoutes = [
   {"title": TOrientation.name, "path": "/orientation", "fun": (context) => TOrientation()},
   {"title": FormValidation.name, "path": "/form_validation", "fun": (context) => FormValidation()},
   {"title": SwipeDismiss.name, "path": "/swipe_dissmiss", "fun": (context) => SwipeDismiss()},
+  {"title": FloatAppBar.name, "path": "/float_app_bar", "fun": (context) => FloatAppBar()},
 ];
 
 Map<String, WidgetBuilder> routes() {
