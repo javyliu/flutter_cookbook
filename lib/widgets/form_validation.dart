@@ -61,6 +61,7 @@ class _MyFormState extends State<MyForm> {
               return null;
             },
             focusNode: myFodusNode,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
             controller: myController,
             // onChanged: (value) {
             //   print("First text field: $value");

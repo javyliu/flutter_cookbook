@@ -36,6 +36,7 @@ class MenuList extends StatelessWidget {
         key: _globalKey,
         // body: DisSnackBar(snackBar: snackBar),
         body: TabBarView(
+
           children: [
             Center(
               child: RaisedButton(
@@ -61,13 +62,12 @@ class MenuList extends StatelessWidget {
               ],
             ),
             Container(
-              height: 200.0,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  Container(
-                    width: 160,
+                  Container(                  
                     color: Colors.blue,
+                    child: Text("container the height"),
                   ),
                   Container(
                     width: 160,
