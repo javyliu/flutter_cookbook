@@ -1,6 +1,9 @@
+import 'package:cookbook/widgets/fetch_data.dart';
 import 'package:cookbook/widgets/float_app_bar.dart';
 import 'package:cookbook/widgets/form_validation.dart';
+import 'package:cookbook/widgets/horizontal_list.dart';
 import 'package:cookbook/widgets/swipe_dismiss.dart';
+import 'package:cookbook/widgets/todo_list.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/menu_list.dart';
@@ -10,6 +13,8 @@ import '../widgets/page_route_transition.dart';
 import '../widgets/physics_simulation.dart';
 import '../widgets/fade_widget.dart';
 import '../widgets/orientation.dart';
+
+final todos = List<Todo>.generate(20, (index) => Todo('Todo $index', 'A description of what needs to be done for Todo $index'));
 
 final List<Map> oriRoutes = [
   {"title": "菜单", "path": "/", "fun": (context) => MenuList()},
@@ -21,6 +26,9 @@ final List<Map> oriRoutes = [
   {"title": FormValidation.name, "path": "/form_validation", "fun": (context) => FormValidation()},
   {"title": SwipeDismiss.name, "path": "/swipe_dissmiss", "fun": (context) => SwipeDismiss()},
   {"title": FloatAppBar.name, "path": "/float_app_bar", "fun": (context) => FloatAppBar()},
+  {"title": HorizontalList.name, "path": "/horizontal_list", "fun": (context) => HorizontalList()},
+  {"title": TodoList.name, "path": "/todo_list", "fun": (context) => TodoList(todos: todos)},
+  {"title": AlbumDetail.name, "path": "/album_detail", "fun": (context) => AlbumDetail()},
 ];
 
 Map<String, WidgetBuilder> routes() {

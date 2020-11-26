@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 class FloatAppBar extends StatelessWidget {
@@ -13,8 +15,11 @@ class FloatAppBar extends StatelessWidget {
             SliverAppBar(
               title: Text(FloatAppBar.name),
               floating: true,
-              flexibleSpace: Placeholder(),
-              expandedHeight: 100,
+              flexibleSpace: Image.asset(
+                "assets/images/movid.jpg",
+                fit: BoxFit.fitWidth,
+              ),
+              expandedHeight: 200,
             ),
             SliverList(
               delegate: SliverChildBuilderDelegate(

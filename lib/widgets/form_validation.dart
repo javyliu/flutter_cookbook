@@ -68,14 +68,11 @@ class _MyFormState extends State<MyForm> {
             // },
           ),
           TextField(
-            controller: myController,
-            focusNode: myFodusNode,
             decoration: InputDecoration(labelText: "密码"),
 
             // autofocus: true,
           ),
           TextField(
-            focusNode: myFodusNode,
             decoration: InputDecoration(labelText: "重复密码"),
             // autofocus: true,
           ),
