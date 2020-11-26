@@ -3,6 +3,7 @@ import 'package:cookbook/widgets/float_app_bar.dart';
 import 'package:cookbook/widgets/form_validation.dart';
 import 'package:cookbook/widgets/horizontal_list.dart';
 import 'package:cookbook/widgets/photo_list.dart';
+import 'package:cookbook/widgets/send_data.dart';
 import 'package:cookbook/widgets/swipe_dismiss.dart';
 import 'package:cookbook/widgets/todo_list.dart';
 import 'package:flutter/material.dart';
@@ -31,6 +32,7 @@ final List<Map> oriRoutes = [
   {"title": TodoList.name, "path": "/todo_list", "fun": (context) => TodoList(todos: todos)},
   {"title": AlbumDetail.name, "path": "/album_detail", "fun": (context) => AlbumDetail()},
   {"title": PhotoList.name, "path": "/photo_list", "fun": (context) => PhotoList()},
+  {"title": SendData.name, "path": "/send_data", "fun": (context) => SendData()},
 ];
 
 Map<String, WidgetBuilder> routes() {
