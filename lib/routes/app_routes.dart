@@ -6,6 +6,8 @@ import 'package:cookbook/widgets/photo_list.dart';
 import 'package:cookbook/widgets/send_data.dart';
 import 'package:cookbook/widgets/swipe_dismiss.dart';
 import 'package:cookbook/widgets/todo_list.dart';
+import 'package:cookbook/widgets/update_data.dart';
+import 'package:cookbook/widgets/web_socket.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/menu_list.dart';
@@ -33,6 +35,8 @@ final List<Map> oriRoutes = [
   {"title": AlbumDetail.name, "path": "/album_detail", "fun": (context) => AlbumDetail()},
   {"title": PhotoList.name, "path": "/photo_list", "fun": (context) => PhotoList()},
   {"title": SendData.name, "path": "/send_data", "fun": (context) => SendData()},
+  {"title": UpdateData.name, "path": "/update_data", "fun": (context) => UpdateData()},
+  {"title": WebSocket.name, "path": "/web_socket", "fun": (context) => WebSocket(title: "聊天websocket测试")},
 ];
 
 Map<String, WidgetBuilder> routes() {

@@ -36,7 +36,6 @@ class MenuList extends StatelessWidget {
         key: _globalKey,
         // body: DisSnackBar(snackBar: snackBar),
         body: TabBarView(
-
           children: [
             Center(
               child: RaisedButton(
@@ -65,7 +64,7 @@ class MenuList extends StatelessWidget {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  Container(                  
+                  Container(
                     color: Colors.blue,
                     child: Text("container the height"),
                   ),
@@ -100,7 +99,6 @@ class MenuList extends StatelessWidget {
         ),
         drawer: Drawer(
           child: ListView(
-            padding: EdgeInsets.zero,
             children: [
               DrawerHeader(
                 child: Text("Drawer Header"),
@@ -108,15 +106,20 @@ class MenuList extends StatelessWidget {
                   color: Colors.blue,
                 ),
               ),
-            ]..addAll(oriRoutes.map((el) {
-                return ListTile(
-                  title: Text(el["title"]),
-                  onTap: () {
-                    Navigator.pop(context);
-                    return Navigator.pushNamed(context, el["path"]);
-                  },
-                );
-              })),
+            ]..addAll(
+                oriRoutes.map((el) {
+                  return SizedBox(
+                    height: 40,
+                    child: ListTile(
+                      title: Text(el["title"]),
+                      onTap: () {
+                        Navigator.pop(context);
+                        return Navigator.pushNamed(context, el["path"]);
+                      },
+                    ),
+                  );
+                }),
+              ),
           ),
         ),
       ),
