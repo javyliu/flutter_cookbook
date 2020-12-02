@@ -1,3 +1,4 @@
+import 'package:cookbook/widgets/ex_file.dart';
 import 'package:cookbook/widgets/ex_sqflite.dart';
 import 'package:cookbook/widgets/fetch_data.dart';
 import 'package:cookbook/widgets/float_app_bar.dart';
@@ -39,6 +40,7 @@ final List<Map> oriRoutes = [
   {"title": UpdateData.name, "path": "/update_data", "fun": (context) => UpdateData()},
   {"title": WebSocket.name, "path": "/web_socket", "fun": (context) => WebSocket(title: "聊天websocket测试")},
   {"title": ExSqflite.name, "path": "/ex_sqflite", "fun": (context) => ExSqflite()},
+  {"title": ExFile.name, "path": "/ex_file", "fun": (context) => ExFile(storage: CounterStorage())},
 ];
 
 Map<String, WidgetBuilder> routes() {

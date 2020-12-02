@@ -10,7 +10,6 @@ abstract class DbBase {
   final String createSql;
 
   DbBase(this.tableName, this.createSql);
-  external factory DbBase.fromJson(Map<String, dynamic> json);
 
   Future<Database> get database async => initDb();
   Future<Database> initDb() async {
