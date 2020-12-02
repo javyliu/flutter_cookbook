@@ -43,7 +43,7 @@ class _ExFileState extends State<ExFile> {
         title: Text(ExFile.name),
       ),
       body: Center(
-        child: Text("Button tapped $_counter time${_counter == 1 ? '' : 's'}"),
+        child: Text("Button tapped $_counter time${_counter == 1 ? '' : 's'}", style: Theme.of(context).textTheme.headline4),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
@@ -55,11 +55,15 @@ class _ExFileState extends State<ExFile> {
 }
 
 class CounterStorage {
+  Directory dir;
   Future<String> get _localPath async {
-    final directory = await getApplicationDocumentsDirectory();
-    log("path: $directory");
+    // dir ??= await getApplicationDocumentsDirectory();
+    if (dir == null) {
+      dir = await getApplicationDocumentsDirectory();
+      log("path: $dir");
+    }
 
-    return directory.path;
+    return dir.path;
   }
 
   Future<File> get _localFile async {
