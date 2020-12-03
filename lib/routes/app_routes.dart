@@ -1,6 +1,7 @@
 import 'package:cookbook/widgets/ex_file.dart';
 import 'package:cookbook/widgets/ex_shared_preference.dart';
 import 'package:cookbook/widgets/ex_sqflite.dart';
+import 'package:cookbook/widgets/ex_video.dart';
 import 'package:cookbook/widgets/fetch_data.dart';
 import 'package:cookbook/widgets/float_app_bar.dart';
 import 'package:cookbook/widgets/form_validation.dart';
@@ -43,6 +44,7 @@ final List<Map> oriRoutes = [
   {"title": ExSqflite.name, "path": "/ex_sqflite", "fun": (context) => ExSqflite()},
   {"title": ExFile.name, "path": "/ex_file", "fun": (context) => ExFile(storage: CounterStorage())},
   {"title": ExSharedPreference.name, "path": "/ex_shared_pref", "fun": (context) => ExSharedPreference(title: "test shared preference")},
+  {"title": ExVideo.name, "path": "/ex_video", "fun": (context) => ExVideo()},
 ];
 
 Map<String, WidgetBuilder> routes() {
