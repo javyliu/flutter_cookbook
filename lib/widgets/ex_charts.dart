@@ -52,13 +52,13 @@ class _ExChartsState extends State<ExCharts> {
     return <LineSeries<SampleData, DateTime>>[
       LineSeries(
         dataSource: chartData,
-        xValueMapper: (datum, index) => datum.x,
+        xValueMapper: (datum, index) => DateTime.parse(datum.x),
         yValueMapper: (datum, index) => datum.y1,
         name: "产品A",
       ),
       LineSeries(
         dataSource: chartData,
-        xValueMapper: (datum, index) => datum.x,
+        xValueMapper: (datum, index) => DateTime.parse(datum.x),
         yValueMapper: (datum, index) => datum.y2,
         pointColorMapper: (datum, index) => Color.fromRGBO(0, 189, 174, 1),
         name: "产品B",

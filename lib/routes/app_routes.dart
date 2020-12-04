@@ -1,4 +1,5 @@
 import 'package:cookbook/widgets/ex_charts.dart';
+import 'package:cookbook/widgets/ex_data_table.dart';
 import 'package:cookbook/widgets/ex_file.dart';
 import 'package:cookbook/widgets/ex_shared_preference.dart';
 import 'package:cookbook/widgets/ex_sqflite.dart';
@@ -47,6 +48,7 @@ final List<Map> oriRoutes = [
   {"title": ExSharedPreference.name, "path": "/ex_shared_pref", "fun": (context) => ExSharedPreference(title: "test shared preference")},
   {"title": ExVideo.name, "path": "/ex_video", "fun": (context) => ExVideo()},
   {"title": ExCharts.name, "path": "/ex_charts", "fun": (context) => ExCharts()},
+  {"title": ExDataTable.name, "path": "/ex_data_table", "fun": (context) => ExDataTable()},
 ];
 
 Map<String, WidgetBuilder> routes() {
