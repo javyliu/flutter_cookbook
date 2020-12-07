@@ -17,19 +17,65 @@ class SampleData {
 
   @override
   String toString() {
-    return "$x, $y1, $y2";
+    return "$x, $y1, $y2, $selected";
+  }
+}
+
+class ProData extends ChangeNotifier {
+  ///实例变量必须在方法中实例化，不能直接指定
+  List<SampleData> items;
+  Future<List<SampleData>> loadData() async {
+    log("---Load Data");
+
+    items = [];
+    String jsonStr = await rootBundle.loadString("assets/chart_data.json");
+    final res = jsonDecode(jsonStr);
+    for (var item in res) {
+      items.add(SampleData.fromJson(item));
+    }
+    return items;
+  }
+
+  void setSelected(int idx, bool value) {
+    items[idx].selected = value;
+    notifyListeners();
   }
 }
 
 class ExDataTable extends StatelessWidget {
   static String name = "数据表使用";
 
-  // ExDataTable() {
-  //   loadData();
-  // }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(ExDataTable.name),
+      ),
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Wtable(),
+        ),
+      ),
+    );
+  }
+}
+
+class Wtable extends StatefulWidget {
+  @override
+  _WtableState createState() => _WtableState();
+}
+
+class _WtableState extends State<Wtable> {
+  Future<List<SampleData>> items;
+  @override
+  void initState() {
+    items = loadData();
+    super.initState();
+  }
 
   Future<List<SampleData>> loadData() async {
-    final List<SampleData> _data = [];
+    log("---Load Data");
+    List<SampleData> _data = [];
     String jsonStr = await rootBundle.loadString("assets/chart_data.json");
     final res = jsonDecode(jsonStr);
     for (var item in res) {
@@ -40,56 +86,46 @@ class ExDataTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(ExDataTable.name),
-      ),
-      body: SingleChildScrollView(
-        child: SafeArea(
-          child: FutureBuilder(
-            future: loadData(),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.done) {
-                if (snapshot.hasData) {
-                  List<SampleData> _resData = snapshot.data;
-                  return DataTable(
-                      columns: [
-                        DataColumn(label: Text("x", style: Theme.of(context).textTheme.headline3)),
-                        DataColumn(label: Text("y1", style: Theme.of(context).textTheme.headline3), numeric: true),
-                        DataColumn(label: Text("y2", style: Theme.of(context).textTheme.headline3), numeric: true),
-                      ],
-                      rows: List.generate(_resData.length, (index) {
-                        SampleData sd = _resData[index];
+    return FutureBuilder(
+      future: items,
+      builder: (context, snapshot) {
+        log("----future builder");
 
-                        return DataRow(
-                          cells: [
-                            DataCell(Text(sd.x)),
-                            DataCell(Text("${sd.y1}")),
-                            DataCell(Text("${sd.y2}")),
-                          ],
-                          onSelectChanged: (value) {
-                            log("---${value.runtimeType}: $value -- ${_resData[index]}");
-                          },
-                        );
-                      })
-                      // rows: snapshot.data.map((SampleData ele) {
-                      //   return DataRow(cells: [
-                      //     DataCell(Text(ele.x)),
-                      //     DataCell(Text(ele.y1.toString())),
-                      //     DataCell(Text(ele.y2.toString())),
-                      //   ]);
-                      // }),
-                      );
-                } else {
-                  return Text("no data");
-                }
-              } else {
-                return Center(child: CircularProgressIndicator());
-              }
-            },
-          ),
-        ),
-      ),
+        if (snapshot.connectionState == ConnectionState.done) {
+          if (snapshot.hasData) {
+            return DataTable(
+              columns: [
+                DataColumn(label: Text("x", style: Theme.of(context).textTheme.headline3)),
+                DataColumn(label: Text("y1", style: Theme.of(context).textTheme.headline3), numeric: true),
+                DataColumn(label: Text("y2", style: Theme.of(context).textTheme.headline3), numeric: true),
+              ],
+              rows: List.generate(snapshot.data.length, (index) {
+                SampleData sd = snapshot.data[index];
+                return DataRow(
+                  cells: [
+                    DataCell(Text(sd.x)),
+                    DataCell(Text("${sd.y1}")),
+                    DataCell(Text("${sd.y2}")),
+                  ],
+                  onSelectChanged: (value) {
+                    log("----before event: ${sd.toString()}");
+
+                    setState(() {
+                      sd.selected = value;
+                    });
+                    log("----after event: ${sd.toString()}");
+                  },
+                  selected: sd.selected,
+                );
+              }),
+            );
+          } else {
+            return Text("no data");
+          }
+        } else {
+          return Center(child: CircularProgressIndicator());
+        }
+      },
     );
   }
 }
