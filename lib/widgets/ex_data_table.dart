@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 class SampleData {
   dynamic x;
@@ -36,8 +37,8 @@ class ProData extends ChangeNotifier {
     return items;
   }
 
-  void setSelected(int idx, bool value) {
-    items[idx].selected = value;
+  void setSelected(SampleData sd, bool value) {
+    sd.selected = value;
     notifyListeners();
   }
 }
@@ -47,19 +48,72 @@ class ExDataTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(ExDataTable.name),
-      ),
-      body: SingleChildScrollView(
-        child: SafeArea(
-          child: Wtable(),
+    return ChangeNotifierProvider(
+      create: (BuildContext context) {
+        return ProData();
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(ExDataTable.name),
+        ),
+        body: SingleChildScrollView(
+          child: SafeArea(
+            child: WlTable(),
+          ),
         ),
       ),
     );
   }
 }
 
+///是否可以用provider来实现状态改变？,没有实现，不知怎么弄,
+class WlTable extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    ProData pd = Provider.of<ProData>(context, listen: false);
+    return FutureBuilder(
+      future: pd.loadData(),
+      builder: (context, snapshot) {
+        log("----future builder");
+
+        if (snapshot.connectionState == ConnectionState.done) {
+          if (snapshot.hasData) {
+            return DataTable(
+              columns: [
+                DataColumn(label: Text("x", style: Theme.of(context).textTheme.headline3)),
+                DataColumn(label: Text("y1", style: Theme.of(context).textTheme.headline3), numeric: true),
+                DataColumn(label: Text("y2", style: Theme.of(context).textTheme.headline3), numeric: true),
+              ],
+              rows: List.generate(snapshot.data.length, (index) {
+                SampleData sd = context.select<ProData, SampleData>((value) => pd.items[index]);
+
+                return DataRow(
+                  cells: [
+                    DataCell(Text(sd.x)),
+                    DataCell(Text("${sd.y1}")),
+                    DataCell(Text("${sd.y2}")),
+                  ],
+                  onSelectChanged: (value) {
+                    log("----before event: ${sd.toString()}");
+                    pd.setSelected(sd, value);
+                    log("----after event: ${sd.toString()}");
+                  },
+                  selected: sd.selected,
+                );
+              }),
+            );
+          } else {
+            return Text("no data");
+          }
+        } else {
+          return Center(child: CircularProgressIndicator());
+        }
+      },
+    );
+  }
+}
+
+///使用有状态组件来刷新datatable，经测试没有问题
 class Wtable extends StatefulWidget {
   @override
   _WtableState createState() => _WtableState();
