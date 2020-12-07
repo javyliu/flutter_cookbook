@@ -22,6 +22,98 @@ class SampleData {
   }
 }
 
+///this class is for the paginatedDatatable
+class DtsData extends DataTableSource {
+  List<SampleData> items;
+  int _selectCount = 0;
+  bool _isRowCountApproximate = false;
+
+  DtsData() {
+    loadData();
+  }
+  Future<void> loadData() async {
+    log("---Load Data");
+
+    items = [];
+    String jsonStr = await rootBundle.loadString("assets/chart_data.json");
+    final res = jsonDecode(jsonStr);
+    for (var item in res) {
+      items.add(SampleData.fromJson(item));
+    }
+    log("load data notify");
+
+    notifyListeners();
+  }
+
+  @override
+  DataRow getRow(int index) {
+    if (index >= items.length || index < 0) throw FlutterError("no data");
+    final SampleData sd = items[index];
+    return DataRow.byIndex(
+      cells: [
+        DataCell(Text(sd.x)),
+        DataCell(Text(sd.y1.toString())),
+        DataCell(Text(sd.y2.toString())),
+      ],
+      selected: sd.selected,
+      index: index,
+      onSelectChanged: (value) {
+        log("--on select changed ${value.toString()}");
+        if (sd.selected != value) {
+          _selectCount = _selectCount += value ? 1 : -1;
+          sd.selected = value;
+          notifyListeners();
+        }
+      },
+    );
+  }
+
+  @override
+  bool get isRowCountApproximate => _isRowCountApproximate;
+
+  @override
+  int get rowCount => items.length;
+
+  @override
+  int get selectedRowCount => _selectCount;
+
+  int rowsPerPage = 5;
+}
+
+class WfulData extends StatefulWidget {
+  final DtsData data = DtsData();
+  @override
+  _WfulDataState createState() => _WfulDataState();
+}
+
+class _WfulDataState extends State<WfulData> {
+  @override
+  Widget build(BuildContext context) {
+    log("----paginated data table build");
+
+    return PaginatedDataTable(
+      rowsPerPage: widget.data.rowsPerPage,
+      availableRowsPerPage: [5, 10, 15],
+      onRowsPerPageChanged: (value) {
+        log("----rows per page is: $value");
+        setState(() {
+          widget.data.rowsPerPage = value;
+        });
+      },
+      columns: [
+        DataColumn(label: Text("x", style: Theme.of(context).textTheme.headline5)),
+        DataColumn(label: Text("y", style: Theme.of(context).textTheme.headline5), numeric: true),
+        DataColumn(
+          label: Text("y2", style: Theme.of(context).textTheme.headline5),
+          numeric: true,
+        ),
+      ],
+      source: widget.data,
+      header: Text("分页表格"),
+    );
+  }
+}
+
 class ProData extends ChangeNotifier {
   ///实例变量必须在方法中实例化，不能直接指定
   List<SampleData> items;
@@ -58,7 +150,8 @@ class ExDataTable extends StatelessWidget {
         ),
         body: SingleChildScrollView(
           child: SafeArea(
-            child: WlTable(),
+            // child: WlTable(),
+            child: WfulData(),
           ),
         ),
       ),
