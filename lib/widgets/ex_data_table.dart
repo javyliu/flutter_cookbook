@@ -80,6 +80,21 @@ class DtsData extends DataTableSource {
   int get selectedRowCount => _selectCount;
 
   int rowsPerPage = 5;
+
+  void sort<T>(Comparable<T> getField(SampleData sampleData), bool b) {
+    items.sort((SampleData s1, SampleData s2) {
+      if (!b) {
+        //两个项进行交换
+        final SampleData temp = s1;
+        s1 = s2;
+        s2 = temp;
+      }
+      final Comparable<T> s1Value = getField(s1);
+      final Comparable<T> s2Value = getField(s2);
+      return Comparable.compare(s1Value, s2Value);
+    });
+    notifyListeners();
+  }
 }
 
 class WfulData extends StatefulWidget {
@@ -89,11 +104,15 @@ class WfulData extends StatefulWidget {
 }
 
 class _WfulDataState extends State<WfulData> {
+  int sortColumnIndex = 0;
+  bool sortAscending = false;
   @override
   Widget build(BuildContext context) {
     log("----paginated data table build");
 
     return PaginatedDataTable(
+      sortAscending: sortAscending,
+      sortColumnIndex: sortColumnIndex,
       rowsPerPage: widget.data.rowsPerPage,
       availableRowsPerPage: [5, 10, 15],
       onRowsPerPageChanged: (value) {
@@ -103,15 +122,36 @@ class _WfulDataState extends State<WfulData> {
         });
       },
       columns: [
-        DataColumn(label: Text("x", style: Theme.of(context).textTheme.headline5)),
-        DataColumn(label: Text("y", style: Theme.of(context).textTheme.headline5), numeric: true),
-        DataColumn(label: Text("y2", style: Theme.of(context).textTheme.headline5), numeric: true),
+        DataColumn(
+          label: Text("x", style: Theme.of(context).textTheme.headline5),
+          onSort: (columnIndex, ascending) {
+            _sort((sd) => sd.x, columnIndex, ascending);
+          },
+        ),
+        DataColumn(
+          label: Text("y", style: Theme.of(context).textTheme.headline5),
+          numeric: true,
+          onSort: (columnIndex, ascending) => _sort((sd) => sd.y1, columnIndex, ascending),
+        ),
+        DataColumn(
+          label: Text("y2", style: Theme.of(context).textTheme.headline5),
+          numeric: true,
+          onSort: (columnIndex, ascending) => _sort((sd) => sd.y2, columnIndex, ascending),
+        ),
         DataColumn(label: Text("y3", style: Theme.of(context).textTheme.headline5), numeric: true),
         DataColumn(label: Text("y4", style: Theme.of(context).textTheme.headline5), numeric: true),
       ],
       source: widget.data,
       header: Text("分页表格"),
     );
+  }
+
+  void _sort<T>(Comparable<T> getField(SampleData sd), int index, bool ascending) {
+    widget.data.sort(getField, ascending);
+    setState(() {
+      sortColumnIndex = index;
+      sortAscending = ascending;
+    });
   }
 }
 
