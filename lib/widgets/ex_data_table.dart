@@ -54,6 +54,8 @@ class DtsData extends DataTableSource {
         DataCell(Text(sd.x)),
         DataCell(Text(sd.y1.toString())),
         DataCell(Text(sd.y2.toString())),
+        DataCell(Text(sd.y1.toString())),
+        DataCell(Text(sd.y2.toString())),
       ],
       selected: sd.selected,
       index: index,
@@ -103,10 +105,9 @@ class _WfulDataState extends State<WfulData> {
       columns: [
         DataColumn(label: Text("x", style: Theme.of(context).textTheme.headline5)),
         DataColumn(label: Text("y", style: Theme.of(context).textTheme.headline5), numeric: true),
-        DataColumn(
-          label: Text("y2", style: Theme.of(context).textTheme.headline5),
-          numeric: true,
-        ),
+        DataColumn(label: Text("y2", style: Theme.of(context).textTheme.headline5), numeric: true),
+        DataColumn(label: Text("y3", style: Theme.of(context).textTheme.headline5), numeric: true),
+        DataColumn(label: Text("y4", style: Theme.of(context).textTheme.headline5), numeric: true),
       ],
       source: widget.data,
       header: Text("分页表格"),
