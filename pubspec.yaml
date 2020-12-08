@@ -37,6 +37,7 @@ dependencies:
   video_player: ^1.0.1
   syncfusion_flutter_charts: ^18.3.52
   provider: ^4.3.2+3
+  qr_code_scanner: ^0.0.13
 
 dev_dependencies:
   flutter_test:
