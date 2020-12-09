@@ -1,13 +1,24 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 import '../routes/app_routes.dart';
 import 'package:transparent_image/transparent_image.dart';
+import '../extension/exts.dart';
 
 class MenuList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final snackBar = SnackBar(content: Text("Yay! A SnackBar"));
     final _globalKey = GlobalKey<ScaffoldState>();
+    var k = "sdf33i".to_i;
+    var reg = RegExp(r'\d+');
+    var u = reg.allMatches("232103kdf0000234234");
+    var u1 = reg.stringMatch("skdfj");
+    var k3 = [3, 4, 5].detect((element) => element > 8);
+    log("====$k3");
+
+    log("--${k.runtimeType} $k -------group(0): ${u.elementAt(1).group(0)}---groups:${u.elementAt(0).groups([0])}---u1: $u1");
 
     ///在Scaffold 中使用Scaffold.of(ctx) 来显示snackBar时，如提示“called with a context that does not contain a scaffold"
     ///表示当前并非scaffold的StatelessWidget类型子组件，所以需要把showSnackBar方法嵌入到一个stalesswidget 或statefulwidget组件中，或使用globalkey
