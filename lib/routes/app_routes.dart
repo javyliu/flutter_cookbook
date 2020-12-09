@@ -1,6 +1,7 @@
 import 'package:cookbook/widgets/ex_charts.dart';
 import 'package:cookbook/widgets/ex_data_table.dart';
 import 'package:cookbook/widgets/ex_file.dart';
+import 'package:cookbook/widgets/ex_image_picker.dart';
 import 'package:cookbook/widgets/ex_qr_code_scanner.dart';
 import 'package:cookbook/widgets/ex_shared_preference.dart';
 import 'package:cookbook/widgets/ex_sqflite.dart';
@@ -51,6 +52,7 @@ final List<Map> oriRoutes = [
   {"title": ExCharts.name, "path": "/ex_charts", "fun": (context) => ExCharts()},
   {"title": ExDataTable.name, "path": "/ex_data_table", "fun": (context) => ExDataTable()},
   {"title": ExQrView.name, "path": "/ex_qr_view", "fun": (context) => ExQrView()},
+  {"title": ExImagePicker.name, "path": "/ex_image_picker", "fun": (context) => ExImagePicker()},
 ];
 
 Map<String, WidgetBuilder> routes() {
