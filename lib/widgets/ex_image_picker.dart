@@ -32,12 +32,11 @@ class _ExImagePickerState extends State<ExImagePicker> {
       await _disposeVideoController();
       _videoCon = VideoPlayerController.file(File(file.path));
       await _videoCon.setVolume(1.0);
+      await _videoCon.initialize();
+      await _videoCon.setLooping(true);
+      await _videoCon.play();
+      setState(() {});
     }
-
-    await _videoCon.initialize();
-    await _videoCon.setLooping(true);
-    await _videoCon.play();
-    setState(() {});
   }
 
   void _onImageButtonPressed(ImageSource source, {BuildContext context}) async {
@@ -69,24 +68,26 @@ class _ExImagePickerState extends State<ExImagePicker> {
       builder: (context) {
         return AlertDialog(
           title: Text("Add optional parameters"),
-          content: Column(
-            children: [
-              TextField(
-                controller: maxWidthController,
-                keyboardType: TextInputType.numberWithOptions(decimal: true),
-                decoration: InputDecoration(hintText: "Enter maxWidth if desired"),
-              ),
-              TextField(
-                controller: maxHeightController,
-                keyboardType: TextInputType.numberWithOptions(decimal: true),
-                decoration: InputDecoration(hintText: "Enter maxHeight if desired"),
-              ),
-              TextField(
-                controller: qualityController,
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(hintText: "Enter quality if desired"),
-              ),
-            ],
+          content: SingleChildScrollView(
+            child: Column(
+              children: [
+                TextField(
+                  controller: maxWidthController,
+                  keyboardType: TextInputType.numberWithOptions(decimal: true),
+                  decoration: InputDecoration(hintText: "Enter maxWidth if desired"),
+                ),
+                TextField(
+                  controller: maxHeightController,
+                  keyboardType: TextInputType.numberWithOptions(decimal: true),
+                  decoration: InputDecoration(hintText: "Enter maxHeight if desired"),
+                ),
+                TextField(
+                  controller: qualityController,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(hintText: "Enter quality if desired"),
+                ),
+              ],
+            ),
           ),
           actions: [
             FlatButton(onPressed: () => Navigator.of(context).pop(), child: const Text("CANCEL")),
@@ -246,7 +247,9 @@ class _ExImagePickerState extends State<ExImagePicker> {
     }
     return Padding(
       padding: const EdgeInsets.all(10),
-      child: null,
+      child: AspecRatioVideo(
+        controller: _videoCon,
+      ),
     );
   }
 
