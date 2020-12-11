@@ -125,7 +125,7 @@ class MenuList extends StatelessWidget {
                       title: Text(el["title"]),
                       onTap: () {
                         Navigator.pop(context);
-                        return Navigator.pushNamed(context, el["path"]);
+                        return Navigator.pushNamed(context, el["path"], arguments: el["title"]);
                       },
                     ),
                   );

@@ -1,3 +1,4 @@
+import 'package:cookbook/main.dart';
 import 'package:cookbook/widgets/ex_charts.dart';
 import 'package:cookbook/widgets/ex_data_table.dart';
 import 'package:cookbook/widgets/ex_file.dart';
@@ -29,7 +30,9 @@ import '../widgets/orientation.dart';
 final todos = List<Todo>.generate(20, (index) => Todo('Todo $index', 'A description of what needs to be done for Todo $index'));
 
 final List<Map> oriRoutes = [
-  {"title": "菜单", "path": "/", "fun": (context) => MenuList()},
+  // {"title": "splashs", "path": "/", "fun": (context) => MyApp()},
+  {"title": "splash1", "path": "/", "fun": (context) => SplaScrs()},
+  {"title": "菜单", "path": "/menulist", "fun": (context) => MenuList()},
   {"title": "容器动画", "path": "/animated_container", "fun": (context) => AnimatedContainerApp()},
   {"title": "页面切换动画", "path": "/page_route_transition", "fun": (context) => PageRouteTransition()},
   {"title": "拖动动画", "path": "/physics_card_demo", "fun": (context) => PhysicsCardDragDemo()},
