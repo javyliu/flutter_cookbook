@@ -137,5 +137,8 @@
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>My description about why I need this capability</string>
 	-->
+	<key>UIStatusBarHidden</key>
+	<true/>
+
 </dict>
 </plist>
