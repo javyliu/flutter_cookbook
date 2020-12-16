@@ -1,4 +1,6 @@
 import 'package:cookbook/main.dart';
+import 'package:cookbook/screens/sign_in/sign_in.dart';
+import 'package:cookbook/screens/splash/splash_screen.dart';
 import 'package:cookbook/widgets/ex_charts.dart';
 import 'package:cookbook/widgets/ex_data_table.dart';
 import 'package:cookbook/widgets/ex_file.dart';
@@ -56,6 +58,8 @@ final List<Map> oriRoutes = [
   {"title": ExDataTable.name, "path": "/ex_data_table", "fun": (context) => ExDataTable()},
   {"title": ExQrView.name, "path": "/ex_qr_view", "fun": (context) => ExQrView()},
   {"title": ExImagePicker.name, "path": "/ex_image_picker", "fun": (context) => ExImagePicker()},
+  {"title": SplashScreen.name, "path": "/splash_screen", "fun": (context) => SplashScreen()},
+  {"title": SignIn.name, "path": "/sign_in", "fun": (context) => SignIn()},
 ];
 
 Map<String, WidgetBuilder> routes() {

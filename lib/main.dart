@@ -1,3 +1,4 @@
+import 'package:cookbook/constants.dart';
 import 'package:cookbook/widgets/menu_list.dart';
 import 'package:flare_splash_screen/flare_splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -7,24 +8,69 @@ import './routes/app_routes.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   // runApp(MyApp());
-  runApp(
-    MaterialApp(
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: "/",
+      initialRoute: "/splash_screen",
       routes: routes(),
-      theme: ThemeData(
+      theme: buildThemeData(),
+    );
+  }
+
+  ThemeData buildThemeData() {
+    var _border = OutlineInputBorder(
+      borderRadius: BorderRadius.circular(28),
+      borderSide: BorderSide(color: jTextColor),
+      gapPadding: 10,
+    );
+    return ThemeData(
+      scaffoldBackgroundColor: Colors.white,
+      appBarTheme: AppBarTheme(
+        color: Colors.white,
+        elevation: 0,
         brightness: Brightness.light,
-        primaryColor: Colors.lightBlue[800],
-        accentColor: Colors.cyan[600],
-        fontFamily: 'Georgia',
+        iconTheme: IconThemeData(color: Colors.black),
         textTheme: TextTheme(
-          headline1: TextStyle(fontSize: 72, fontWeight: FontWeight.bold),
-          headline6: TextStyle(fontSize: 36, fontStyle: FontStyle.italic),
-          bodyText2: TextStyle(fontSize: 14, fontFamily: 'Hind'),
+          headline6: TextStyle(color: jSecondaryColor),
         ),
       ),
-    ),
-  );
+      fontFamily: 'Muli',
+      textTheme: TextTheme(
+        bodyText1: TextStyle(color: jTextColor),
+        bodyText2: TextStyle(color: jTextColor),
+      ),
+      visualDensity: VisualDensity.adaptivePlatformDensity,
+      inputDecorationTheme: InputDecorationTheme(
+        //floatingLabelBehavior 放在这里不起作用，应放在inputDecoration中
+        // floatingLabelBehavior: FloatingLabelBehavior.always,
+        contentPadding: EdgeInsets.symmetric(
+          horizontal: 38,
+          vertical: 20,
+        ),
+        enabledBorder: _border,
+        focusedBorder: _border,
+        border: _border,
+      ),
+
+      // brightness: Brightness.light,
+      // primaryColor: Colors.lightBlue[800],
+      // accentColor: Colors.cyan[600],
+      // textTheme: TextTheme(
+      //   headline1: TextStyle(fontSize: 72, fontWeight: FontWeight.bold),
+      //   headline6: TextStyle(fontSize: 36, fontStyle: FontStyle.italic),
+      //   bodyText2: TextStyle(fontSize: 14, fontFamily: 'Hind'),
+      // ),
+    );
+  }
 }
 
 class SplaScrs extends StatelessWidget {
@@ -33,7 +79,7 @@ class SplaScrs extends StatelessWidget {
     return SplashScreen.navigate(
       name: "assets/images/intro.flr",
       next: (context) => MenuList(),
-      until: () => Future.delayed(Duration(seconds: 10)),
+      until: () => Future.delayed(Duration(seconds: 4)),
       startAnimation: '1',
     );
   }
