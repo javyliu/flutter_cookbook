@@ -1,7 +1,7 @@
-import 'package:cookbook/constants.dart';
 import 'package:flutter/material.dart';
 
 import '../../size_config.dart';
+import 'no_account_text.dart';
 import 'sign_form.dart';
 import 'social_card.dart';
 
@@ -56,16 +56,7 @@ class Body extends StatelessWidget {
                 SizedBox(
                   height: getProportionateScreenHeight(20),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("Dont't have an account?"),
-                    Text(
-                      "Sign Up",
-                      style: TextStyle(color: jPrimaryColor),
-                    )
-                  ],
-                )
+                NoAccountText()
               ],
             ),
           ),

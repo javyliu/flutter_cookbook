@@ -1,12 +1,10 @@
-import 'dart:developer';
-
 import 'package:cookbook/components/default_btn.dart';
 import 'package:cookbook/constants.dart';
 import 'package:flutter/material.dart';
 
+import '../../components/form_error.dart';
 import '../../size_config.dart';
 import 'custom_icon.dart';
-import '../../components/form_error.dart';
 
 class SignForm extends StatefulWidget {
   @override
@@ -43,9 +41,12 @@ class _SignFormState extends State<SignForm> {
               ),
               Text("Remember me"),
               Spacer(),
-              Text(
-                "Forgot Password",
-                style: TextStyle(decoration: TextDecoration.underline),
+              GestureDetector(
+                onTap: () => Navigator.pushNamed(context, "/forget_password"),
+                child: Text(
+                  "Forgot Password",
+                  style: TextStyle(decoration: TextDecoration.underline),
+                ),
               ),
             ],
           ),
@@ -57,7 +58,6 @@ class _SignFormState extends State<SignForm> {
           DefaultBtn(
             text: "Continue",
             press: () {
-              log("===${errors.length}");
               if (_formKey.currentState.validate()) {
                 _formKey.currentState.save();
               }

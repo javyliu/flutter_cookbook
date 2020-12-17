@@ -1,4 +1,5 @@
 import 'package:cookbook/main.dart';
+import 'package:cookbook/screens/forgot_password.dart';
 import 'package:cookbook/screens/sign_in.dart';
 import 'package:cookbook/screens/splash_screen.dart';
 import 'package:cookbook/widgets/ex_charts.dart';
@@ -60,6 +61,7 @@ final List<Map> oriRoutes = [
   {"title": ExImagePicker.name, "path": "/ex_image_picker", "fun": (context) => ExImagePicker()},
   {"title": SplashScreen.name, "path": "/splash_screen", "fun": (context) => SplashScreen()},
   {"title": SignIn.name, "path": "/sign_in", "fun": (context) => SignIn()},
+  {"title": ForgotPassword.name, "path": "/forget_password", "fun": (context) => ForgotPassword()},
 ];
 
 Map<String, WidgetBuilder> routes() {

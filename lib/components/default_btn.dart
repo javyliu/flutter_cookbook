@@ -5,7 +5,7 @@ import '../size_config.dart';
 
 class DefaultBtn extends StatelessWidget {
   final String text;
-  final Function press;
+  final GestureTapCallback press;
   const DefaultBtn({
     Key key,
     this.text,
