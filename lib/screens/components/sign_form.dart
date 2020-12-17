@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 import '../../size_config.dart';
 import 'custom_icon.dart';
-import 'form_error.dart';
+import '../../components/form_error.dart';
 
 class SignForm extends StatefulWidget {
   @override
