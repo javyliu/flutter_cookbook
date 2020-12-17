@@ -51,6 +51,7 @@ class _BodyState extends State<Body> {
                 padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
                 child: Column(
                   children: [
+                    Spacer(flex: 1),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: List.generate(splashData.length, (index) => buildDots(index)),
@@ -62,7 +63,7 @@ class _BodyState extends State<Body> {
                         Navigator.pushNamed(context, "/sign_in");
                       },
                     ),
-                    Spacer(),
+                    Spacer(flex: 1),
                   ],
                 ),
               ),

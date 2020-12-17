@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
     );
   }
 
+  ///统一的设置主题
   ThemeData buildThemeData() {
     var _border = OutlineInputBorder(
       borderRadius: BorderRadius.circular(28),

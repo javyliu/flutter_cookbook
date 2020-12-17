@@ -16,6 +16,7 @@ class SizeConfig {
   }
 }
 
+/// 根据屏幕的实际宽度来得到部件设计宽度所对所应的实际展示宽度
 ///Get the proportionate height as per screen size
 double getProportionateScreenHeight(double height) {
   double screenHeight = SizeConfig.screenHeight;
@@ -24,8 +25,8 @@ double getProportionateScreenHeight(double height) {
   return (screenHeight / 812.0) * height;
 }
 
+/// 根据屏幕的实际高度来得到部件设计高度所对所应的实际展示高度
 /// Get the proportionate width as per screen size
-/// 用于调整设计尺寸和屏幕尺寸
 double getProportionateScreenWidth(double width) {
   //屏幕：ios宽：414
   double screenWidth = SizeConfig.screenWidth;

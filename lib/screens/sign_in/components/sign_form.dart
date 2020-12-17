@@ -3,10 +3,10 @@ import 'dart:developer';
 import 'package:cookbook/components/default_btn.dart';
 import 'package:cookbook/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../../../size_config.dart';
 import 'custom_icon.dart';
+import 'form_error.dart';
 
 class SignForm extends StatefulWidget {
   @override
@@ -49,7 +49,10 @@ class _SignFormState extends State<SignForm> {
               ),
             ],
           ),
-          FormError(errors: errors),
+          Padding(
+            padding: const EdgeInsets.only(left: 16.0),
+            child: FormError(errors: errors),
+          ),
           SizedBox(height: getProportionateScreenHeight(20)),
           DefaultBtn(
             text: "Continue",
@@ -156,38 +159,6 @@ class _SignFormState extends State<SignForm> {
           img: "assets/icons/Mail.svg",
         ),
       ),
-    );
-  }
-}
-
-class FormError extends StatelessWidget {
-  const FormError({
-    Key key,
-    @required this.errors,
-  }) : super(key: key);
-
-  final List<String> errors;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: List.generate(errors.length, (index) => buildErrorRow(errors[index])),
-    );
-  }
-
-  Row buildErrorRow(String error) {
-    return Row(
-      children: [
-        SvgPicture.asset(
-          "assets/icons/Error.svg",
-          height: getProportionateScreenWidth(14),
-          width: getProportionateScreenHeight(14),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 10),
-          child: Text(error),
-        )
-      ],
     );
   }
 }

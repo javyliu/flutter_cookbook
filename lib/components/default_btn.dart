@@ -23,7 +23,7 @@ class DefaultBtn extends StatelessWidget {
         onPressed: press,
         child: Text(
           text,
-          style: TextStyle(fontSize: getProportionateScreenWidth(18), color: Colors.white),
+          style: TextStyle(fontSize: getProportionateScreenHeight(18), color: Colors.white),
         ),
       ),
     );
