@@ -14,6 +14,7 @@ class ForgotPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log((ForgotPassword).toString());
     return Scaffold(
       appBar: AppBar(
         title: Text(name),

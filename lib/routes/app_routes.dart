@@ -22,13 +22,13 @@ import 'package:cookbook/widgets/update_data.dart';
 import 'package:cookbook/widgets/web_socket.dart';
 import 'package:flutter/material.dart';
 
-import '../widgets/menu_list.dart';
-
+import '../extension/exts.dart';
 import '../widgets/animated_container.dart';
+import '../widgets/fade_widget.dart';
+import '../widgets/menu_list.dart';
+import '../widgets/orientation.dart';
 import '../widgets/page_route_transition.dart';
 import '../widgets/physics_simulation.dart';
-import '../widgets/fade_widget.dart';
-import '../widgets/orientation.dart';
 
 final todos = List<Todo>.generate(20, (index) => Todo('Todo $index', 'A description of what needs to be done for Todo $index'));
 
@@ -61,7 +61,7 @@ final List<Map> oriRoutes = [
   {"title": ExImagePicker.name, "path": "/ex_image_picker", "fun": (context) => ExImagePicker()},
   {"title": SplashScreen.name, "path": "/splash_screen", "fun": (context) => SplashScreen()},
   {"title": SignIn.name, "path": "/sign_in", "fun": (context) => SignIn()},
-  {"title": ForgotPassword.name, "path": "/forget_password", "fun": (context) => ForgotPassword()},
+  {"title": ForgotPassword.name, "path": "/${(ForgotPassword).toString().underscore()}", "fun": (context) => ForgotPassword()},
 ];
 
 Map<String, WidgetBuilder> routes() {

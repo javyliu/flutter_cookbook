@@ -1,4 +1,10 @@
 extension StrExt on String {
+  String underscore() {
+    var str = this.replaceAllMapped(RegExp(r"A-Z"), (Match m) => "_${m.group(0)}".toLowerCase());
+    str.replaceFirst("_", "");
+    return str;
+  }
+
   // ignore: non_constant_identifier_names
   int get to_i {
     try {
