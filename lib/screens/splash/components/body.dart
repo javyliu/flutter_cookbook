@@ -51,12 +51,11 @@ class _BodyState extends State<Body> {
                 padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
                 child: Column(
                   children: [
-                    Spacer(flex: 1),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: List.generate(splashData.length, (index) => buildDots(index)),
                     ),
-                    Spacer(flex: 4),
+                    Spacer(flex: 3),
                     DefaultBtn(
                       text: "Continue",
                       press: () {
