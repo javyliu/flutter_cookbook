@@ -1,6 +1,6 @@
 import 'package:cookbook/main.dart';
-import 'package:cookbook/screens/sign_in/sign_in.dart';
-import 'package:cookbook/screens/splash/splash_screen.dart';
+import 'package:cookbook/screens/sign_in.dart';
+import 'package:cookbook/screens/splash_screen.dart';
 import 'package:cookbook/widgets/ex_charts.dart';
 import 'package:cookbook/widgets/ex_data_table.dart';
 import 'package:cookbook/widgets/ex_file.dart';

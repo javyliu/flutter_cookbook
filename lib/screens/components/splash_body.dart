@@ -4,7 +4,7 @@ import 'package:cookbook/constants.dart';
 import 'package:cookbook/size_config.dart';
 import 'package:flutter/material.dart';
 
-import '../../../components/default_btn.dart';
+import '../../components/default_btn.dart';
 import 'splash_content.dart';
 
 class Body extends StatefulWidget {
@@ -51,7 +51,9 @@ class _BodyState extends State<Body> {
                 padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
                 child: Column(
                   children: [
-                    Spacer(flex: 1),
+                    SizedBox(
+                      height: getProportionateScreenHeight(8),
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: List.generate(splashData.length, (index) => buildDots(index)),

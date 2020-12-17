@@ -1,7 +1,7 @@
 import 'package:cookbook/constants.dart';
 import 'package:flutter/material.dart';
 
-import '../../../size_config.dart';
+import '../../size_config.dart';
 import 'sign_form.dart';
 import 'social_card.dart';
 

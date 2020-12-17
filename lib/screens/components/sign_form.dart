@@ -4,7 +4,7 @@ import 'package:cookbook/components/default_btn.dart';
 import 'package:cookbook/constants.dart';
 import 'package:flutter/material.dart';
 
-import '../../../size_config.dart';
+import '../../size_config.dart';
 import 'custom_icon.dart';
 import 'form_error.dart';
 

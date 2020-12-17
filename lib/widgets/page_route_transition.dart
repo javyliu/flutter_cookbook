@@ -17,30 +17,30 @@ class PageRouteTransition extends StatelessWidget {
   }
 }
 
-Route _createRoute0() {
-  return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) => Page2(),
-    transitionsBuilder: (context, animation, secondaryAnimation, child) => child,
-  );
-}
+// Route _createRoute0() {
+//   return PageRouteBuilder(
+//     pageBuilder: (context, animation, secondaryAnimation) => Page2(),
+//     transitionsBuilder: (context, animation, secondaryAnimation, child) => child,
+//   );
+// }
 
-Route _createRoute() {
-  return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) => Page2(),
-    transitionsBuilder: (context, animation, secondaryAnimation, child) {
-      var begin = Offset(0, 1.0);
-      var end = Offset.zero;
-      var curve = Curves.ease;
-      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-      var offsetAnimation = animation.drive(tween);
+// Route _createRoute() {
+//   return PageRouteBuilder(
+//     pageBuilder: (context, animation, secondaryAnimation) => Page2(),
+//     transitionsBuilder: (context, animation, secondaryAnimation, child) {
+//       var begin = Offset(0, 1.0);
+//       var end = Offset.zero;
+//       var curve = Curves.ease;
+//       var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+//       var offsetAnimation = animation.drive(tween);
 
-      return SlideTransition(
-        position: offsetAnimation,
-        child: child,
-      );
-    },
-  );
-}
+//       return SlideTransition(
+//         position: offsetAnimation,
+//         child: child,
+//       );
+//     },
+//   );
+// }
 
 Route _createRoute1() {
   return PageRouteBuilder(

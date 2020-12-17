@@ -1,7 +1,7 @@
 import 'package:cookbook/size_config.dart';
 import 'package:flutter/material.dart';
 
-import 'components/body.dart';
+import 'components/splash_body.dart';
 
 class SplashScreen extends StatelessWidget {
   static String name = '初始闪屏';
