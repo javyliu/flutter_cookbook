@@ -141,7 +141,6 @@ class _ProfileFormState extends State<ProfileForm> {
           ),
           SizedBox(height: getProportionateScreenHeight(30)),
           TextFormField(
-            obscureText: true,
             onSaved: (newValue) {
               return address = newValue;
             },
@@ -175,6 +174,7 @@ class _ProfileFormState extends State<ProfileForm> {
             press: () {
               if (_formKey.currentState.validate()) {
                 _formKey.currentState.save();
+                Navigator.pushNamed(context, "opt_screen");
               }
             },
           ),

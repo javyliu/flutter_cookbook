@@ -26,3 +26,13 @@ const String jMatchPassError = "Passwords don't match";
 const String jNameNullError = "Please Enter your name";
 const String jPhoneNumberNullError = "Please Enter your phone number";
 const String jAddressNullError = "Please Enter ypur address";
+
+final outlineInputBorder = OutlineInputBorder(
+  borderRadius: BorderRadius.circular(10),
+  borderSide: BorderSide(color: jTextColor),
+);
+final optInputDecoration = InputDecoration(
+  contentPadding: EdgeInsets.symmetric(vertical: getProportionateScreenWidth(15)),
+  enabledBorder: outlineInputBorder,
+  focusedBorder: outlineInputBorder,
+);
