@@ -1,73 +1,24 @@
-import 'package:cookbook/components/default_btn.dart';
-import 'package:cookbook/constants.dart';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
+import '../../components/default_btn.dart';
 import '../../components/form_error.dart';
+import '../../constants.dart';
 import '../../size_config.dart';
 import 'custom_icon.dart';
 
-class SignForm extends StatefulWidget {
+class SignUpForm extends StatefulWidget {
   @override
-  _SignFormState createState() => _SignFormState();
+  _SignUpFormState createState() => _SignUpFormState();
 }
 
-class _SignFormState extends State<SignForm> {
+class _SignUpFormState extends State<SignUpForm> {
   final _formKey = GlobalKey<FormState>();
-  final List<String> errors = [];
   String email;
   String password;
-  bool remember = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Column(
-        children: [
-          buildEmailField(),
-          SizedBox(height: getProportionateScreenHeight(20)),
-          buildPwdField(),
-          SizedBox(height: getProportionateScreenHeight(20)),
-          Row(
-            children: [
-              Checkbox(
-                value: remember,
-                activeColor: jPrimaryColor,
-                onChanged: (value) {
-                  setState(() {
-                    remember = value;
-                  });
-                },
-              ),
-              Text("Remember me"),
-              Spacer(),
-              GestureDetector(
-                onTap: () => Navigator.pushNamed(context, "forgot_password"),
-                child: Text(
-                  "Forgot Password",
-                  style: TextStyle(decoration: TextDecoration.underline),
-                ),
-              ),
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 16.0),
-            child: FormError(errors: errors),
-          ),
-          SizedBox(height: getProportionateScreenHeight(20)),
-          DefaultBtn(
-            text: "Continue",
-            press: () {
-              if (_formKey.currentState.validate()) {
-                _formKey.currentState.save();
-                Navigator.pushNamed(context, "login_success");
-              }
-            },
-          )
-        ],
-      ),
-    );
-  }
+  String confirmPassword;
+  List<String> errors = [];
 
   void addError(String err) {
     if (!errors.contains(err)) {
@@ -83,6 +34,70 @@ class _SignFormState extends State<SignForm> {
         errors.remove(err);
       });
     }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: _formKey,
+      child: Column(
+        children: [
+          SizedBox(height: getProportionateScreenHeight(30)),
+          buildEmailField(),
+          SizedBox(height: getProportionateScreenHeight(30)),
+          buildPwdField(),
+          SizedBox(height: getProportionateScreenHeight(30)),
+          buildConfirmPwdField(),
+          SizedBox(height: getProportionateScreenHeight(40)),
+          FormError(errors: errors),
+          DefaultBtn(
+            text: "Continue",
+            press: () {
+              if (_formKey.currentState.validate()) {
+                _formKey.currentState.save();
+                Navigator.pushNamed(context, "complete_profile");
+
+                //go to complete profile page
+              }
+            },
+          ),
+        ],
+      ),
+    );
+  }
+
+  TextFormField buildConfirmPwdField() {
+    return TextFormField(
+      obscureText: true,
+      onSaved: (newValue) {
+        log("---confirm onsaved...");
+        return confirmPassword = newValue;
+      },
+      decoration: InputDecoration(
+        hintText: "Re-enter your password",
+        labelText: "Confirm Password",
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        suffixIcon: CustomIcon(
+          img: "assets/icons/Lock.svg",
+        ),
+      ),
+      validator: (value) {
+        log("----value: $value ---password: $password ");
+        if (value.isEmpty) {
+          return "";
+        } else if (value != password) {
+          addError(jMatchPassError);
+          return "";
+        }
+        return null;
+      },
+      onChanged: (value) {
+        if (value.isNotEmpty && password == value) {
+          removeError(jMatchPassError);
+        }
+        return null;
+      },
+    );
   }
 
   TextFormField buildPwdField() {
@@ -113,6 +128,7 @@ class _SignFormState extends State<SignForm> {
         } else if (value.length >= 4) {
           removeError(jShortPassError);
         }
+        password = value;
         return null;
       },
     );

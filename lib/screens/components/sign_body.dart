@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../size_config.dart';
 import 'no_account_text.dart';
 import 'sign_form.dart';
-import 'social_card.dart';
+import 'social_icon_list.dart';
 
 class Body extends StatelessWidget {
   const Body({
@@ -36,23 +36,7 @@ class Body extends StatelessWidget {
                 SizedBox(height: SizeConfig.screenHeight * 0.08),
                 SignForm(),
                 SizedBox(height: SizeConfig.screenHeight * 0.08),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SocialCard(
-                      icon: "assets/icons/google-icon.svg",
-                      press: () {},
-                    ),
-                    SocialCard(
-                      icon: "assets/icons/facebook-2.svg",
-                      press: () {},
-                    ),
-                    SocialCard(
-                      icon: "assets/icons/twitter.svg",
-                      press: () {},
-                    ),
-                  ],
-                ),
+                SocialIconList(),
                 SizedBox(
                   height: getProportionateScreenHeight(20),
                 ),

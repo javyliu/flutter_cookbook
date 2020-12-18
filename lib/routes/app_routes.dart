@@ -1,34 +1,37 @@
-import 'package:cookbook/main.dart';
-import 'package:cookbook/screens/forgot_password.dart';
-import 'package:cookbook/screens/sign_in.dart';
-import 'package:cookbook/screens/splash_screen.dart';
-import 'package:cookbook/widgets/ex_charts.dart';
-import 'package:cookbook/widgets/ex_data_table.dart';
-import 'package:cookbook/widgets/ex_file.dart';
-import 'package:cookbook/widgets/ex_image_picker.dart';
-import 'package:cookbook/widgets/ex_qr_code_scanner.dart';
-import 'package:cookbook/widgets/ex_shared_preference.dart';
-import 'package:cookbook/widgets/ex_sqflite.dart';
-import 'package:cookbook/widgets/ex_video.dart';
-import 'package:cookbook/widgets/fetch_data.dart';
-import 'package:cookbook/widgets/float_app_bar.dart';
-import 'package:cookbook/widgets/form_validation.dart';
-import 'package:cookbook/widgets/horizontal_list.dart';
-import 'package:cookbook/widgets/photo_list.dart';
-import 'package:cookbook/widgets/send_data.dart';
-import 'package:cookbook/widgets/swipe_dismiss.dart';
-import 'package:cookbook/widgets/todo_list.dart';
-import 'package:cookbook/widgets/update_data.dart';
-import 'package:cookbook/widgets/web_socket.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' show WidgetBuilder;
 
 import '../extension/exts.dart';
+import '../main.dart';
+import '../screens/complete_profile.dart';
+import '../screens/forgot_password.dart';
+import '../screens/login_success.dart';
+import '../screens/sign_in.dart';
+import '../screens/sign_up.dart';
+import '../screens/splash_screen.dart';
 import '../widgets/animated_container.dart';
+import '../widgets/ex_charts.dart';
+import '../widgets/ex_data_table.dart';
+import '../widgets/ex_file.dart';
+import '../widgets/ex_image_picker.dart';
+import '../widgets/ex_qr_code_scanner.dart';
+import '../widgets/ex_shared_preference.dart';
+import '../widgets/ex_sqflite.dart';
+import '../widgets/ex_video.dart';
 import '../widgets/fade_widget.dart';
+import '../widgets/fetch_data.dart';
+import '../widgets/float_app_bar.dart';
+import '../widgets/form_validation.dart';
+import '../widgets/horizontal_list.dart';
 import '../widgets/menu_list.dart';
 import '../widgets/orientation.dart';
 import '../widgets/page_route_transition.dart';
+import '../widgets/photo_list.dart';
 import '../widgets/physics_simulation.dart';
+import '../widgets/send_data.dart';
+import '../widgets/swipe_dismiss.dart';
+import '../widgets/todo_list.dart';
+import '../widgets/update_data.dart';
+import '../widgets/web_socket.dart';
 
 final todos = List<Todo>.generate(20, (index) => Todo('Todo $index', 'A description of what needs to be done for Todo $index'));
 
@@ -59,9 +62,12 @@ final List<Map> oriRoutes = [
   {"title": ExDataTable.name, "path": "/ex_data_table", "fun": (context) => ExDataTable()},
   {"title": ExQrView.name, "path": "/ex_qr_view", "fun": (context) => ExQrView()},
   {"title": ExImagePicker.name, "path": "/ex_image_picker", "fun": (context) => ExImagePicker()},
-  {"title": SplashScreen.name, "path": "/splash_screen", "fun": (context) => SplashScreen()},
-  {"title": SignIn.name, "path": "/sign_in", "fun": (context) => SignIn()},
-  {"title": ForgotPassword.name, "path": "/${(ForgotPassword).toString().underscore()}", "fun": (context) => ForgotPassword()},
+  {"title": SplashScreen.name, "path": (SplashScreen).toString().underscore(), "fun": (context) => SplashScreen()},
+  {"title": SignIn.name, "path": (SignIn).toString().underscore(), "fun": (context) => SignIn()},
+  {"title": ForgotPassword.name, "path": (ForgotPassword).toString().underscore(), "fun": (context) => ForgotPassword()},
+  {"title": LoginSuccess.name, "path": (LoginSuccess).toString().underscore(), "fun": (context) => LoginSuccess()},
+  {"title": SignUp.name, "path": (SignUp).toString().underscore(), "fun": (context) => SignUp()},
+  {"title": CompleteProfile.name, "path": (CompleteProfile).toString().underscore(), "fun": (context) => CompleteProfile()},
 ];
 
 Map<String, WidgetBuilder> routes() {

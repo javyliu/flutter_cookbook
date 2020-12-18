@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: "/splash_screen",
+      initialRoute: "splash_screen",
       routes: routes(),
       theme: buildThemeData(),
     );
@@ -44,6 +44,15 @@ class MyApp extends StatelessWidget {
           headline6: TextStyle(color: jSecondaryColor),
         ),
       ),
+      tabBarTheme: TabBarTheme(
+        labelColor: Colors.orange,
+        unselectedLabelColor: Colors.black12,
+        labelStyle: TextStyle(
+          color: Colors.black,
+          backgroundColor: Colors.green,
+        ),
+      ),
+
       fontFamily: 'Muli',
       textTheme: TextTheme(
         bodyText1: TextStyle(color: jTextColor),

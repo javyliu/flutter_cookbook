@@ -14,7 +14,7 @@ class NoAccountText extends StatelessWidget {
       children: [
         Text("Dont't have an account?"),
         GestureDetector(
-          onTap: () => Navigator.popAndPushNamed(context, "/sign_up"),
+          onTap: () => Navigator.pushNamed(context, "sign_up"),
           child: Text(
             "Sign Up",
             style: TextStyle(color: jPrimaryColor),
