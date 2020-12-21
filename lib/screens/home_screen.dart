@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'components/categories.dart';
 import 'components/discount_banner.dart';
 import 'components/home_header.dart';
-import 'components/section_title.dart';
+import 'components/propular_products.dart';
+import 'components/special_offers.dart';
 
 class HomeScreen extends StatelessWidget {
   static String name = "首页";
@@ -23,10 +24,10 @@ class HomeScreen extends StatelessWidget {
               SizedBox(height: getProportionateScreenHeight(30)),
               Categories(),
               SizedBox(height: getProportionateScreenHeight(30)),
-              SectionTitle(
-                title: "Special for you",
-                press: () {},
-              ),
+              SpecialOffers(),
+              SizedBox(height: getProportionateScreenHeight(30)),
+              PropularProducts(),
+              SizedBox(height: getProportionateScreenHeight(30)),
             ],
           ),
         ),
