@@ -39,7 +39,7 @@ class LoginSuccess extends StatelessWidget {
               width: SizeConfig.screenWidth * 0.8,
               child: DefaultBtn(
                 text: "Back to Home",
-                press: () => Navigator.pop(context),
+                press: () => Navigator.pushNamed(context, "home_screen"),
               ),
             ),
             SizedBox(height: SizeConfig.screenHeight * 0.2),
