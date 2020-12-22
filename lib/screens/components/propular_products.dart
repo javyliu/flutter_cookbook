@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cookbook/models/product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -25,7 +27,15 @@ class PropularProducts extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ...List.generate(demoProducts.length, (index) => ProductCard(product: demoProducts[index])),
+              ...List.generate(
+                demoProducts.length,
+                (index) => ProductCard(
+                  product: demoProducts[index],
+                  press: () {
+                    log("----$index is pressed");
+                  },
+                ),
+              ),
               SizedBox(width: getProportionateScreenWidth(20)),
             ],
           ),
@@ -53,7 +63,9 @@ class ProductCard extends StatelessWidget {
       padding: EdgeInsets.only(left: getProportionateScreenWidth(20)),
       child: SizedBox(
         width: getProportionateScreenWidth(width),
+        height: 230,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             AspectRatio(
               aspectRatio: aspectRetion,
@@ -66,7 +78,7 @@ class ProductCard extends StatelessWidget {
                 child: Image.asset(product.images[0]),
               ),
             ),
-            Text(product.title, style: TextStyle(color: Colors.black)),
+            Text(product.title, maxLines: 2, style: TextStyle(color: Colors.black)),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
