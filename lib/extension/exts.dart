@@ -2,7 +2,7 @@ extension StrExt on String {
   ///transform constant to underscore string
   ///ex: "HelloWorld".underscore => "hello_world"
   String underscore() {
-    return this.replaceAllMapped(RegExp(r'[A-Z]'), (Match m) => "_${m.group(0)}".toLowerCase()).replaceFirst("_", "");
+    return this.replaceAllMapped(RegExp(r'\B[A-Z]'), (Match m) => "_${m.group(0)}").toLowerCase();
     // str = str.replaceFirst("_", "");
     // return str;
   }
