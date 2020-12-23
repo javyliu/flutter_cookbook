@@ -36,6 +36,7 @@ class PropularProducts extends StatelessWidget {
                   },
                   linkPress: () {
                     log("---product ${demoProducts[index].id} is press");
+                    Navigator.pushNamed(context, "product_detail", arguments: demoProducts[index]);
                   },
                 ),
               ),

@@ -1,5 +1,6 @@
 import 'package:cookbook/screens/home_screen.dart';
 import 'package:cookbook/screens/opt_screen.dart';
+import 'package:cookbook/screens/product_detail.dart';
 import 'package:flutter/material.dart' show WidgetBuilder;
 
 import '../extension/exts.dart';
@@ -72,6 +73,7 @@ final List<Map> oriRoutes = [
   {"title": CompleteProfile.name, "path": (CompleteProfile).toString().underscore(), "fun": (context) => CompleteProfile()},
   {"title": OptScreen.name, "path": (OptScreen).toString().underscore(), "fun": (context) => OptScreen()},
   {"title": HomeScreen.name, "path": (HomeScreen).toString().underscore(), "fun": (context) => HomeScreen()},
+  {"title": ProductDetail.name, "path": (ProductDetail).toString().underscore(), "fun": (context) => ProductDetail()},
 ];
 
 Map<String, WidgetBuilder> routes() {
