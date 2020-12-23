@@ -34,6 +34,9 @@ class PropularProducts extends StatelessWidget {
                   press: () {
                     log("----$index is pressed");
                   },
+                  linkPress: () {
+                    log("---product ${demoProducts[index].id} is press");
+                  },
                 ),
               ),
               SizedBox(width: getProportionateScreenWidth(20)),
@@ -52,10 +55,12 @@ class ProductCard extends StatelessWidget {
     this.aspectRetion = 1.02,
     @required this.product,
     this.press,
+    this.linkPress,
   }) : super(key: key);
   final double width, aspectRetion;
   final Product product;
   final GestureTapCallback press;
+  final GestureTapCallback linkPress;
 
   @override
   Widget build(BuildContext context) {
@@ -67,15 +72,18 @@ class ProductCard extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            AspectRatio(
-              aspectRatio: aspectRetion,
-              child: Container(
-                padding: EdgeInsets.all(getProportionateScreenWidth(20)),
-                decoration: BoxDecoration(
-                  color: jSecondaryColor.withOpacity(0.2),
-                  borderRadius: BorderRadius.circular(15),
+            GestureDetector(
+              onTap: linkPress,
+              child: AspectRatio(
+                aspectRatio: aspectRetion,
+                child: Container(
+                  padding: EdgeInsets.all(getProportionateScreenWidth(20)),
+                  decoration: BoxDecoration(
+                    color: jSecondaryColor.withOpacity(0.2),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Image.asset(product.images[0]),
                 ),
-                child: Image.asset(product.images[0]),
               ),
             ),
             Text(product.title, maxLines: 2, style: TextStyle(color: Colors.black)),
