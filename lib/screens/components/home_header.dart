@@ -20,7 +20,7 @@ class HomeHeader extends StatelessWidget {
           IconBtnWithCounter(
             svgSrc: "assets/icons/Cart\ Icon.svg",
             numOfItems: 0,
-            press: () {},
+            press: () => Navigator.pushNamed(context, "cart_screen"),
           ),
           IconBtnWithCounter(
             svgSrc: "assets/icons/Bell.svg",
