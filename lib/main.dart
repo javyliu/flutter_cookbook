@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: "splash_screen",
+      // initialRoute: "profile_screen",
       routes: routes(),
       theme: buildThemeData(),
     );

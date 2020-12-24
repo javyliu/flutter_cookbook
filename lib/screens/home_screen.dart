@@ -1,3 +1,5 @@
+import 'package:cookbook/menu_state.dart';
+import 'package:cookbook/screens/profile_screen.dart';
 import 'package:cookbook/size_config.dart';
 import 'package:flutter/material.dart';
 
@@ -31,6 +33,9 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
         ),
+      ),
+      bottomNavigationBar: CustomBottomNavBar(
+        selectedMenu: MenuState.home,
       ),
     );
   }
