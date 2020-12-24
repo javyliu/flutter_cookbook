@@ -13,46 +13,48 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(name)),
-      body: Column(
-        children: [
-          ProfilePic(),
-          SizedBox(height: 20),
-          ProfileMenu(
-            icon: "assets/icons/User\ Icon.svg",
-            title: "My Account",
-            press: () {
-              print("hello---");
-            },
-          ),
-          ProfileMenu(
-            icon: "assets/icons/Bell.svg",
-            title: "Notifications",
-            press: () {
-              print("notifications---");
-            },
-          ),
-          ProfileMenu(
-            icon: "assets/icons/Settings.svg",
-            title: "Settings",
-            press: () {
-              print("Settings---");
-            },
-          ),
-          ProfileMenu(
-            icon: "assets/icons/Question\ mark.svg",
-            title: "Help Center",
-            press: () {
-              print("Help Center---");
-            },
-          ),
-          ProfileMenu(
-            icon: "assets/icons/Log\ out.svg",
-            title: "Log Out",
-            press: () {
-              print("log out---");
-            },
-          ),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            ProfilePic(),
+            SizedBox(height: 20),
+            ProfileMenu(
+              icon: "assets/icons/User\ Icon.svg",
+              title: "My Account",
+              press: () {
+                print("hello---");
+              },
+            ),
+            ProfileMenu(
+              icon: "assets/icons/Bell.svg",
+              title: "Notifications",
+              press: () {
+                print("notifications---");
+              },
+            ),
+            ProfileMenu(
+              icon: "assets/icons/Settings.svg",
+              title: "Settings",
+              press: () {
+                print("Settings---");
+              },
+            ),
+            ProfileMenu(
+              icon: "assets/icons/Question\ mark.svg",
+              title: "Help Center",
+              press: () {
+                print("Help Center---");
+              },
+            ),
+            ProfileMenu(
+              icon: "assets/icons/Log\ out.svg",
+              title: "Log Out",
+              press: () {
+                print("log out---");
+              },
+            ),
+          ],
+        ),
       ),
       bottomNavigationBar: CustomBottomNavBar(
         selectedMenu: MenuState.profile,
