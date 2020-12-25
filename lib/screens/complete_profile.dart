@@ -174,7 +174,7 @@ class _ProfileFormState extends State<ProfileForm> {
             press: () {
               if (_formKey.currentState.validate()) {
                 _formKey.currentState.save();
-                Navigator.pushNamed(context, "opt_screen");
+                Navigator.pushNamed(context, "/opt_screen");
               }
             },
           ),

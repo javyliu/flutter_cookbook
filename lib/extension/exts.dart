@@ -7,6 +7,10 @@ extension StrExt on String {
     // return str;
   }
 
+  String toRoutePath() {
+    return "/$this";
+  }
+
   // ignore: non_constant_identifier_names
   int get to_i {
     try {

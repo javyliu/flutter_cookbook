@@ -62,7 +62,7 @@ class _BodyState extends State<Body> {
                     DefaultBtn(
                       text: "Continue",
                       press: () {
-                        Navigator.pushNamed(context, "sign_in");
+                        Navigator.pushNamed(context, "/sign_in");
                       },
                     ),
                     Spacer(flex: 1),

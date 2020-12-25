@@ -24,7 +24,7 @@ class HomeHeader extends StatelessWidget {
             press: () {
               CommonUtils.hideKeyboard(context);
 
-              return Navigator.pushNamed(context, "cart_screen");
+              return Navigator.pushNamed(context, "/cart_screen");
             },
           ),
           IconBtnWithCounter(

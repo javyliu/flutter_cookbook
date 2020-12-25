@@ -55,7 +55,7 @@ class _SignUpFormState extends State<SignUpForm> {
             press: () {
               if (_formKey.currentState.validate()) {
                 _formKey.currentState.save();
-                Navigator.pushNamed(context, "complete_profile");
+                Navigator.pushNamed(context, "/complete_profile");
 
                 //go to complete profile page
               }

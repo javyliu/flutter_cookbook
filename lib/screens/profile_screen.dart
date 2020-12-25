@@ -98,7 +98,7 @@ class CustomBottomNavBar extends StatelessWidget {
                 "assets/icons/Shop\ Icon.svg",
                 color: selectedMenu == MenuState.home ? jPrimaryColor : jSecondaryColor,
               ),
-              onPressed: () => Navigator.pushNamed(context, "home_screen"),
+              onPressed: () => Navigator.pushNamed(context, "/home_screen"),
             ),
             IconButton(
               icon: SvgPicture.asset(
@@ -119,7 +119,7 @@ class CustomBottomNavBar extends StatelessWidget {
                 "assets/icons/User\ Icon.svg",
                 color: selectedMenu == MenuState.profile ? jPrimaryColor : jSecondaryColor,
               ),
-              onPressed: () => Navigator.pushNamed(context, "profile_screen"),
+              onPressed: () => Navigator.pushNamed(context, "/profile_screen"),
             ),
           ],
         ),
