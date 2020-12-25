@@ -46,7 +46,9 @@ class _CartScreenState extends State<CartScreen> {
                   child: Row(
                     children: [
                       Spacer(),
-                      SvgPicture.asset("assets/icons/Trash.svg"),
+                      // SvgPicture.asset("assets/icons/Trash.svg"),
+                      // Icon(Icons.delete, color: Colors.amber),
+                      Icon(Icons.highlight_remove, color: Colors.black45),
                     ],
                   ),
                 ),

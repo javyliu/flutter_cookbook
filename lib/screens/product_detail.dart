@@ -20,42 +20,40 @@ class ProductDetail extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xfff5f6f9),
       appBar: CustomAppBar(rating: product.rating),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            ProductImages(product: product),
-            TopRoundedContainer(
-              child: Column(
-                children: [
-                  ProductDescription(
-                    product: product,
-                    pressOnSeeMore: () {
-                      print("hello");
-                    },
-                  ),
-                  TopRoundedContainer(
-                    color: Color(0xfff6f7f9),
-                    child: Column(
-                      children: [
-                        ProductColors(product: product),
-                        TopRoundedContainer(
-                          color: Colors.white,
-                          child: Padding(
-                            padding: EdgeInsets.fromLTRB(SizeConfig.screenWidth * 0.15, getProportionateScreenWidth(15), SizeConfig.screenWidth * 0.15, getProportionateScreenWidth(40)),
-                            child: DefaultBtn(
-                              text: "Add to Cart",
-                              press: () {},
-                            ),
+      body: ListView(
+        children: [
+          ProductImages(product: product),
+          TopRoundedContainer(
+            child: Column(
+              children: [
+                ProductDescription(
+                  product: product,
+                  pressOnSeeMore: () {
+                    print("hello");
+                  },
+                ),
+                TopRoundedContainer(
+                  color: Color(0xfff6f7f9),
+                  child: Column(
+                    children: [
+                      ProductColors(product: product),
+                      TopRoundedContainer(
+                        color: Colors.white,
+                        child: Padding(
+                          padding: EdgeInsets.fromLTRB(SizeConfig.screenWidth * 0.15, getProportionateScreenWidth(15), SizeConfig.screenWidth * 0.15, getProportionateScreenWidth(40)),
+                          child: DefaultBtn(
+                            text: "Add to Cart",
+                            press: () {},
                           ),
                         ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

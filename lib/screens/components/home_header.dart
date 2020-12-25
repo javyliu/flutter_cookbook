@@ -1,3 +1,4 @@
+import 'package:cookbook/extension/common_utils.dart';
 import 'package:flutter/material.dart';
 
 import '../../size_config.dart';
@@ -20,7 +21,11 @@ class HomeHeader extends StatelessWidget {
           IconBtnWithCounter(
             svgSrc: "assets/icons/Cart\ Icon.svg",
             numOfItems: 0,
-            press: () => Navigator.pushNamed(context, "cart_screen"),
+            press: () {
+              CommonUtils.hideKeyboard(context);
+
+              return Navigator.pushNamed(context, "cart_screen");
+            },
           ),
           IconBtnWithCounter(
             svgSrc: "assets/icons/Bell.svg",
