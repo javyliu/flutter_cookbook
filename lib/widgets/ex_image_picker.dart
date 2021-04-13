@@ -309,8 +309,8 @@ class _AspecRatioVideoState extends State<AspecRatioVideo> {
       return;
     }
 
-    if (initialized != controller.value.initialized) {
-      initialized = controller.value.initialized;
+    if (initialized != controller.value.isInitialized) {
+      initialized = controller.value.isInitialized;
       setState(() {});
     }
   }

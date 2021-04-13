@@ -18,7 +18,7 @@ List<Photo> parsePhotos(dynamic responseBody) {
 Future<List<Photo>> fetchPhotos(http.Client client) async {
   log("----fetch photos");
 
-  final response = await client.get("https://jsonplaceholder.typicode.com/photos");
+  final response = await client.get(Uri.parse("https://jsonplaceholder.typicode.com/photos"));
   final body = jsonDecode(response.body);
 
   // log(body.toString());

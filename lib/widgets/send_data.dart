@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 
 Future<Album> createAlbum(String title) async {
   final http.Response response = await http.post(
-    'https://jsonplaceholder.typicode.com/albums',
+    Uri.parse('https://jsonplaceholder.typicode.com/albums'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },

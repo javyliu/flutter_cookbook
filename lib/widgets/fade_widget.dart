@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class FadeWidget extends StatefulWidget {
+  static String name = "渐隐动画";
   const FadeWidget({
     Key key,
   }) : super(key: key);

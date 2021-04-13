@@ -62,7 +62,7 @@ class _ExQrViewState extends State<ExQrView> {
                     children: [
                       Container(
                         margin: EdgeInsets.all(8),
-                        child: RaisedButton(
+                        child: ElevatedButton(
                           onPressed: () {
                             if (controller != null) {
                               controller.toggleFlash();
@@ -83,7 +83,7 @@ class _ExQrViewState extends State<ExQrView> {
                       ),
                       Container(
                         margin: EdgeInsets.all(8),
-                        child: RaisedButton(
+                        child: ElevatedButton(
                           onPressed: () {
                             if (controller != null) {
                               controller.flipCamera();
@@ -110,7 +110,7 @@ class _ExQrViewState extends State<ExQrView> {
                     children: [
                       Container(
                         margin: EdgeInsets.all(8),
-                        child: RaisedButton(
+                        child: ElevatedButton(
                           onPressed: () {
                             controller?.pauseCamera();
                           },
@@ -122,7 +122,7 @@ class _ExQrViewState extends State<ExQrView> {
                       ),
                       Container(
                         margin: EdgeInsets.all(8),
-                        child: RaisedButton(
+                        child: ElevatedButton(
                           onPressed: () {
                             controller?.resumeCamera();
                           },
@@ -147,7 +147,7 @@ class _ExQrViewState extends State<ExQrView> {
     this.controller = controller;
     controller.scannedDataStream.listen((data) {
       setState(() {
-        qrText = data;
+        qrText = data as String;
       });
     });
   }

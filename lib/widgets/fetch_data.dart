@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 Future<Album> fetchAlbum() async {
   log("--fetch album");
 
-  final response = await http.get("https://jsonplaceholder.typicode.com/albums/1");
+  final response = await http.get(Uri.parse("https://jsonplaceholder.typicode.com/albums/1"));
   log("---fetch album response: ${jsonDecode(response.body)}");
 
   if (response.statusCode == 200) {
@@ -23,7 +23,7 @@ Future<Album> deleteAlbum(String id) async {
   log("---------id is: $id");
 
   final response = await http.delete(
-    "https://jsonplaceholder.typicode.com/albums/$id",
+    Uri.parse("https://jsonplaceholder.typicode.com/albums/$id"),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
