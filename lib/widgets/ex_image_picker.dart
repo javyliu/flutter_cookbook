@@ -90,8 +90,8 @@ class _ExImagePickerState extends State<ExImagePicker> {
             ),
           ),
           actions: [
-            FlatButton(onPressed: () => Navigator.of(context).pop(), child: const Text("CANCEL")),
-            FlatButton(
+            TextButton(onPressed: () => Navigator.of(context).pop(), child: const Text("CANCEL")),
+            TextButton(
               onPressed: () {
                 double width = maxWidthController.text.isNotEmpty ? double.parse(maxWidthController.text) : null;
                 double height = maxHeightController.text.isNotEmpty ? double.parse(maxHeightController.text) : null;

@@ -67,7 +67,7 @@ class _AnimatedContainerAppState extends State<AnimatedContainerApp> {
                 title: Text('memory image'),
                 content: Image.memory(pngBytes),
                 actions: [
-                  FlatButton(onPressed: () => Navigator.of(context).pop(), child: const Text("Cancel")),
+                  TextButton(onPressed: () => Navigator.of(context).pop(), child: const Text("Cancel")),
                 ],
               );
             },

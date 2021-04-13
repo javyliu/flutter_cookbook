@@ -84,13 +84,13 @@ class _MyFormState extends State<MyForm> {
             child: ElevatedButton(
               onPressed: () {
                 if (_formKey.currentState.validate()) {
-                  Scaffold.of(context).showSnackBar(SnackBar(content: Text("Processing Data...")));
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Processing Data...")));
                 }
               },
               child: Text("Submit"),
             ),
           ),
-          FlatButton(
+          TextButton(
             onPressed: () {
               // myFodusNode.requestFocus();
               myFodusNode.nextFocus();
@@ -107,7 +107,7 @@ class _MyFormState extends State<MyForm> {
           ),
           InkWell(
             onTap: () {
-              Scaffold.of(context).showSnackBar(
+              ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: Text("Tap"),
                 ),

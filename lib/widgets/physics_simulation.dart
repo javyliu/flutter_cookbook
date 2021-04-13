@@ -27,9 +27,8 @@ class DraggableCard extends StatefulWidget {
 
 class _DraggableCardState extends State<DraggableCard> with SingleTickerProviderStateMixin {
   AnimationController _controller;
-
-  Alignment _dragAlignmet = Alignment.center;
-  Animation<Alignment> _animation;
+  Alignment dragAlignmet = Alignment.center;
+  // Animation<Alignment> _animation;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +38,7 @@ class _DraggableCardState extends State<DraggableCard> with SingleTickerProvider
       onPanDown: (details) {},
       onPanUpdate: (details) {
         setState(() {
-          _dragAlignmet += Alignment(
+          dragAlignmet += Alignment(
             details.delta.dx / (size.width / 2),
             details.delta.dy / (size.height / 2),
           );

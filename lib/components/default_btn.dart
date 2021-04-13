@@ -17,9 +17,11 @@ class DefaultBtn extends StatelessWidget {
     return SizedBox(
       width: double.infinity,
       height: getProportionateScreenHeight(56),
-      child: FlatButton(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        color: jPrimaryColor,
+      child: TextButton(
+        style: TextButton.styleFrom(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          primary: jPrimaryColor,
+        ),
         onPressed: press,
         child: Text(
           text,

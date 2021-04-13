@@ -10,7 +10,7 @@ class MenuList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final snackBar = SnackBar(content: Text("Yay! A SnackBar"));
-    final _globalKey = GlobalKey<ScaffoldState>();
+    final _globalKey = GlobalKey<ScaffoldMessengerState>();
     var k = "sdf33i".to_i;
     var reg = RegExp(r'\d+');
     var u = reg.allMatches("232103kdf0000234234");
@@ -49,7 +49,7 @@ class MenuList extends StatelessWidget {
         body: TabBarView(
           children: [
             Center(
-              child: RaisedButton(
+              child: ElevatedButton(
                 child: Text("show snackbar"),
                 onPressed: () => _globalKey.currentState.showSnackBar(snackBar),
               ),
@@ -149,7 +149,7 @@ class DisSnackBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: FlatButton(child: Text("显示 SnackBar"), onPressed: () => Scaffold.of(context).showSnackBar(snackBar)),
+      child: TextButton(child: Text("显示 SnackBar"), onPressed: () => ScaffoldMessenger.of(context).showSnackBar(snackBar)),
     );
   }
 }
