@@ -1,0 +1,5 @@
+{
+    "vim.sneak": true,
+    "vim.easymotion": true,
+    "vim.sneakUseIgnorecaseAndSmartcase": true
+}
